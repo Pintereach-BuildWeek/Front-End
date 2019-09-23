@@ -85,9 +85,9 @@ class Signup extends React.Component {
   }
   
   const mapStateToProps = (state) => ({
-    email: state.email,
-    username: state.username,
-    password: state.password
+    //email: state.email,
+    //username: state.username,
+    //password: state.password
   });
   
   export default connect(
