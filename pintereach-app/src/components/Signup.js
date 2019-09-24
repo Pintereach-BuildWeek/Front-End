@@ -97,87 +97,107 @@ class Signup extends React.Component {
 
 */
 
-  import React, {useState} from "react";
-  import axios from "axios";
-  import { Link } from "react-router-dom";
-  
-  const Signup = (props) => {
-  
+import React, { useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { Button, Layout, Form, Icon, Input } from 'antd';
 
-  
-    // STATE
-  
-    const [user, setUser] = useState({ 
-      username: "", 
-      password: "" 
-    });
-  
-    // CHANGE
-  
-    const handleChange = e => {
-      setUser({ ...user, [e.target.name]: e.target.value });
-    };
-  
-    // SUBMIT
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      axios
-        .post("https://bw-pintereach.herokuapp.com/createnewuser", user)
-        .then(res => {
-          console.log("test:", res);
-          localStorage.setItem("token", res.data.payload);
-          props.history.push("/protected");                         //  <- CHANGE PATH
-        })
-        .catch(err => console.error(err.response));
-    };
-  
-    return (
-      <>
-        <div>
-        <div>
-        <h1>Pintereach App</h1>
-        </div>
-  
-        <form onSubmit={handleSubmit}>
-  
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            onChange={handleChange}
-            value={user.username}
-          />
-  
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            onChange={handleChange}
-            value={user.password}
-          />
-  
-          <button type="submit">Sign Up and Log In</button>
 
-          <hr></hr>
-  
-          <section className="userlogin">
-            Already have an account? <Link to="/login">Log in</Link>
-          </section>
+const Signup = (props) => {
 
-        </form>
-        <br></br>
-        <br></br>
-        <br></br>
+  const { Content } = Layout;
 
-            <footer>
-                <p> Add Footer Content !!! </p>
-            </footer>
 
-        </div>
-      </>
-    );
+  // STATE
+
+  const [user, setUser] = useState({
+    username: "",
+    password: ""
+  });
+
+  // CHANGE
+
+  const handleChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
-  
-  export default Signup;
-  
+
+  // SUBMIT
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .post("https://bw-pintereach.herokuapp.com/createnewuser", user)
+      .then(res => {
+        console.log("test:", res);
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/protected");                         //  <- CHANGE PATH
+      })
+      .catch(err => console.error(err.response));
+  };
+
+  return (
+    <>
+      <div>
+        <Layout>
+          <Content
+            style={{
+              width: 480,
+              marginRight: 'auto',
+              marginLeft: 'auto',
+              marginTop: '2rem',
+              marginBottom: '2rem'
+            }}
+            className="sign-up-form"
+          >
+
+            <div>
+              <h1>Pintereach App</h1>
+            </div>
+
+            <Form onSubmit={handleSubmit}>
+
+              <Input
+                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                style={{ marginBottom: '1rem' }}
+                type="text"
+                name="username"
+                placeholder="username"
+                onChange={handleChange}
+                value={user.username}
+              />
+
+              <Input
+                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                style={{ marginBottom: '1rem' }}
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={handleChange}
+                value={user.password}
+              />
+
+              <Button type="submit">Sign Up and Log In</Button>
+
+              <hr></hr>
+
+              <section className="userlogin">
+                Already have an account? <Link to="/login">Log in</Link>
+              </section>
+
+            </Form>
+            <br></br>
+            <br></br>
+            <br></br>
+          </Content>
+        </Layout>
+
+        <footer>
+          <p> Add Footer Content !!! </p>
+        </footer>
+
+      </div>
+    </>
+  );
+};
+
+export default Signup;
