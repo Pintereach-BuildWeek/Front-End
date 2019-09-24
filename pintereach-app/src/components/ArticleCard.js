@@ -38,7 +38,9 @@ const ArticleCard = (props) => {
 
           />
           <div>
-            <hr></hr>
+            <hr style={{
+              margin: '1rem'
+            }}></hr>
             <span
               style={{
                 display: 'flex',
