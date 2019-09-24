@@ -3,7 +3,7 @@ import { Card, Icon, Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 
 const ArticleCard = (props) => {
-  const { id, mustRead, imgUrl, title, summary } = props;
+  const { id, mustRead, imgUrl, title, summary, category } = props;
 
   const { Meta } = Card;
 
@@ -37,6 +37,13 @@ const ArticleCard = (props) => {
             description={summary}
 
           />
+          <div>
+            <hr></hr>
+            <span>
+              <Icon type="tag" />
+              <p>{category}</p>
+            </span>
+          </div>
           {/* 'must read' button, delete    div  should have absolute positioning at top left and right respectively*/}
           {/* Must Read should be conditional on the boolean of article.mustRead */}
 
