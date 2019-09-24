@@ -7,8 +7,8 @@ const NavBar = () => {
 
         <h1>Pintereach</h1>
 
-        <NavLink exact to="/home" ClassName="NavBtn"></NavLink>
-        <NavLink to="/" ClassName="NavBtn"></NavLink>
+        <NavLink exact to="/home" className="NavBtn">Profile</NavLink>
+        <NavLink to="/" className="NavBtn">Signup</NavLink>
 
       </div>
     );

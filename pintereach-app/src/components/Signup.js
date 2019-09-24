@@ -1,4 +1,4 @@
-// IMPORTS
+/*// IMPORTS
 
 import React from "react";
 
@@ -24,13 +24,13 @@ class Signup extends React.Component {
           [e.target.name]: e.target.value
         }
       });
-    };
+    }; 
   
     signup = e => {
       // e.preventDefault(); <- IF NEEDED
       this.props
         .signup(this.state.signupCreds)
-        .then(() => this.props.history.push(""));  //  <- ADD PATH
+        .then(() => this.props.history.push("/home"));  //  <- ADD PATH
     };
   
     render() {
@@ -69,7 +69,7 @@ class Signup extends React.Component {
                   onChange={this.changeHandler}
                   required
                 />
-                <button>Sign Up</button>
+                <button type="submit">Sign Up</button>
               </form>
             </section>
 
@@ -94,3 +94,76 @@ class Signup extends React.Component {
     mapStateToProps,
     { signup }
   )(Signup);
+
+*/
+
+  import React, {useState} from "react";
+  import axios from "axios";
+  
+  const Signup = (props) => {
+  
+
+  
+    // STATE
+  
+    const [user, setUser] = useState({ 
+      username: "", 
+      password: "" 
+    });
+  
+    // CHANGE
+  
+    const handleChange = e => {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    };
+  
+    // SUBMIT
+  
+    const handleSubmit = e => {
+      e.preventDefault();
+      axios
+        .post("https://bw-pintereach.herokuapp.com/createnewuser", user)
+        .then(res => {
+          console.log("test:", res);
+          localStorage.setItem("token", res.data.payload);
+          props.history.push("/protected");                         //  <- CHANGE PATH
+        })
+        .catch(err => console.error(err.response));
+    };
+  
+    return (
+      <>
+        <div>
+        <div>
+        <h1>Pintereach App</h1>
+        </div>
+  
+        <form onSubmit={handleSubmit}>
+  
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            onChange={handleChange}
+            value={user.username}
+          />
+  
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={handleChange}
+            value={user.password}
+          />
+  
+          <button type="submit">Log In</button>
+  
+        </form>
+  
+        </div>
+      </>
+    );
+  };
+  
+  export default Signup;
+  
