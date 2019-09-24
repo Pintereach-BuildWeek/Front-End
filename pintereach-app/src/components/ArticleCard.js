@@ -39,7 +39,12 @@ const ArticleCard = (props) => {
           />
           <div>
             <hr></hr>
-            <span>
+            <span
+              style={{
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                alignItems: 'baseline'
+              }}>
               <Icon type="tag" />
               <p>{category}</p>
             </span>
