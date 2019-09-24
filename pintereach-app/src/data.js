@@ -1,6 +1,6 @@
 //Dummy data
 
-export default [
+export const articles = [
   {
     id: "1",
     mustRead: true,
