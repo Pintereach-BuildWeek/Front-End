@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import SearchForm from "./SearchForm";
 import ArticleCard from './ArticleCard';
 
+
 function ArticleList() {
     const [articleList, setArticleList] = useState(data);
     const {id, mustRead, imgUrl, title, category, summary} = data;
@@ -12,6 +13,7 @@ function ArticleList() {
         <SearchForm/>
         <div>
             {
+                
                 data.map(entry =>
                     <ArticleCard id={entry.id} 
                                  mustRead={entry.mustRead} 

@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {data} from "../../src/data";
 
 function SearchForm() {
@@ -31,4 +31,4 @@ function SearchForm() {
         </form>
     )
 }
-export default SearchForm;
+export default SearchForm;*/

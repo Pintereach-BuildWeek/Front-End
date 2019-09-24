@@ -14,7 +14,7 @@ export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
 
   return axios
-    .post("", creds)  //  <- ADD PATH
+    .post("https://bw-pintereach.herokuapp.com/login", creds)  //  <- ADD PATH
     .then(res => {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("id", res.data.id);
@@ -22,16 +22,16 @@ export const login = creds => dispatch => {
     });
 };
 
-// SIGNUP ACTION '.POST'
+// SIGNUP ACTION '.POST' 
 
 export const signup = creds => dispatch => {
   dispatch({ type: SIGNUP_START });
   return axios
-    .post("", creds)  //  <- ADD PATH
+    .post("https://bw-pintereach.herokuapp.com/createnewuser", creds)  //  <- ADD PATH
     .then(res => {
 
       return axios
-        .post("", creds)  //  <- ADD PATH
+        .post("https://bw-pintereach.herokuapp.com/login", creds)  //  <- ADD PATH
         .then(res => {
           localStorage.setItem("token", res.data.token);
             dispatch({ type: LOGIN_SUCCESS, payload: res.data });
