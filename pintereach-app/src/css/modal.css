@@ -1,0 +1,49 @@
+.modal {
+    z-index: 2;
+    position: fixed;
+    margin: 20%;
+    background: white;
+    width: 500px;
+    height: 160px;
+    padding: 40px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px 0 grey;
+}
+
+.modal label {
+    font-size: 1rem;
+    display: inline-block;
+    width: 100px;
+}
+
+.modal .inputDiv {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.modal input {
+    font-size: 1rem;
+    width: 340px;
+}
+
+.modal .modal-btns {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.modal .modal-btns button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    width: 100px;
+    margin: 0 10px;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
