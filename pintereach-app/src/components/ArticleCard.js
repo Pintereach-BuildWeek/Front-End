@@ -18,7 +18,7 @@ const ArticleCard = (props) => {
     // card fragment
     <>
 
-      <Col span={6}>
+      <Col xs={18} sm={14} md={10} lg={8} xl={7} >
         <Card
           key={id}
           hoverable

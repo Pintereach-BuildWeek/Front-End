@@ -17,29 +17,26 @@ function ArticleList() {
     return (
         <>
             {/* <SearchForm /> */}
-            <Layout>
-                <Content>
-                    <Row
-                        type='flex'
-                        justify='space-between'
-                        gutter={0}
 
-                    >
-                        {
-                            articlesArray.map(entry =>
-                                <ArticleCard id={entry.id}
-                                    mustRead={entry.mustRead}
-                                    imgUrl={entry.imgUrl}
-                                    title={entry.title}
-                                    category={entry.category}
-                                    summary={entry.summary} />
-                            )
+            <Row
+                type='flex'
+                justify='center'
+                gutter={8}
 
-                        }
-                    </Row>
-                </Content>
+            >
+                {
+                    articlesArray.map(entry =>
+                        <ArticleCard id={entry.id}
+                            mustRead={entry.mustRead}
+                            imgUrl={entry.imgUrl}
+                            title={entry.title}
+                            category={entry.category}
+                            summary={entry.summary} />
+                    )
 
-            </Layout>
+                }
+            </Row>
+
         </>
     )
 }
