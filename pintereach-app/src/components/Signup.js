@@ -99,6 +99,7 @@ class Signup extends React.Component {
 
   import React, {useState} from "react";
   import axios from "axios";
+  import { Link } from "react-router-dom";
   
   const Signup = (props) => {
   
@@ -156,10 +157,23 @@ class Signup extends React.Component {
             value={user.password}
           />
   
-          <button type="submit">Log In</button>
+          <button type="submit">Sign Up and Log In</button>
+
+          <hr></hr>
   
+          <section className="userlogin">
+            Already have an account? <Link to="/login">Log in</Link>
+          </section>
+
         </form>
-  
+        <br></br>
+        <br></br>
+        <br></br>
+
+            <footer>
+                <p> Add Footer Content !!! </p>
+            </footer>
+
         </div>
       </>
     );

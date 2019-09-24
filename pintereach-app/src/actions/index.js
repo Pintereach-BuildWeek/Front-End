@@ -41,3 +41,64 @@ export const signup = creds => dispatch => {
 
 // .ADD & .DELETE TO BE ADDED 
 
+
+
+// GET ALL
+
+export const GET_ALLDATA_START = "GET_ALLDATA_START";
+export const GET_ALLDATA_SUCCESS = "GET_ALLDATA_SUCCESS";
+export const GET_ALLDATA_FAILURE = "GET_ALLDATA_FAILURE";
+
+export const getAllData = id => dispatch => {
+  dispatch({ type: GET_ALLDATA_START });
+  axios
+    .get("https://bw-pintereach.herokuapp.com/articles", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: GET_ALLDATA_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: GET_ALLDATA_FAILURE, payload: err.response });
+    });
+};
+
+// GET BY ID
+
+export const GET_IDDATA_START = "GET_IDDATA_START";
+export const GET_IDDATA_SUCCESS = "GET_IDDATA_SUCCESS";
+export const GET_IDDATA_FAILURE = "GET_IDDATA_FAILURE";
+
+export const getIdData = id => dispatch => {
+  dispatch({ type: GET_IDDATA_START });
+  axios
+    .get("https://bw-pintereach.herokuapp.com/article/{articleId}", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: GET_IDDATA_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: GET_IDDATA_FAILURE, payload: err.response });
+    });
+};
+
+// GET BY USERNAME
+
+export const GET_USERDATA_START = "GET_USERDATA_START";
+export const GET_USERDATA_SUCCESS = "GET_USERDATA_SUCCESS";
+export const GET_USERDATA_FAILURE = "GET_USERDATA_FAILURE";
+
+export const getUserData = id => dispatch => {
+  dispatch({ type: GET_USERDATA_START });
+  axios
+    .get("https://bw-pintereach.herokuapp.com/user/{username}", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: GET_USERDATA_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: GET_USERDATA_FAILURE, payload: err.response });
+    });
+};
