@@ -110,8 +110,4 @@ export const articlesArray = [
         imgUrl: "https://source.unsplash.com/random",
     },
 
-
-
-
-
 ]
