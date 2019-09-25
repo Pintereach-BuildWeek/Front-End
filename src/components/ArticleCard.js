@@ -30,7 +30,7 @@ const ArticleCard = (props) => {
           style={{ width: 320, marginBottom: '1rem' }}
           actions={[
             <Button type={(mustRead ? 'primary' : 'dashed')} onClick={() => setMustRead(id)} >Must Read</Button>,
-            <Icon type="delete" onClick={() => deleteArticle(id)} />
+            <Button onClick={() => deleteArticle(id)} ><Icon type="delete" /></Button>
 
 
           ]}>

@@ -56,7 +56,7 @@ const Home = () => {
 
   const deleteArticle = id => {
     console.log(`delete clicked`)
-    setArticles(articles.filter(article => article.id !== id))
+    setArticles(articles.filter(article => article.articleid !== id))
   }
 
   const setMustRead = id => {
