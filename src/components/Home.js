@@ -40,15 +40,16 @@ const Home = () => {
 
   const addArticle = article => {
     // console.log('submit and add article pressed')
+    console.log(`article in addArticle: ${article}`)
     article.articleid = Date.now();
     // console.log(article)
     setArticles([...articles, article]);
     setModalDisplay({ visible: false });
     // console.log(articles)
-    return 1
+
   }
 
-  // console.log(articles);
+  console.log(articles);
 
   // Card Functions
 

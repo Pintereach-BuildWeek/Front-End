@@ -4,7 +4,7 @@ import { Modal, Form, Input, Button } from 'antd';
 export default function ArticleModal(props) {
     const { hideModal, addArticle, modalDisplay } = props;
 
-    const initialFormState = { id: '', link: '', title: '', summary: '', category: '' };
+    const initialFormState = { articleid: '', link: '', title: '', summary: '', category: '' };
 
     const [article, setArticle] = useState(initialFormState);
 
@@ -14,11 +14,9 @@ export default function ArticleModal(props) {
         console.log(article)
     }
 
-    // const logArticle = () => {
-    //     console.log(`log article function ${article} function ${addArticle}`);
-
-    //     console.log(`logging addArticle article ${addArticle(article)}`)
-    // }
+    const clickAddArticle = () => {
+        addArticle(article)
+    }
 
     return (
         <>
@@ -34,7 +32,7 @@ export default function ArticleModal(props) {
                 // onOk={addArticle}
 
                 footer={[
-                    <Button form='articleForm' key='submit' htmlType='submit' onClick={addArticle}>Add Article</Button>
+                    <Button form='articleForm' key='submit' htmlType='submit' onClick={clickAddArticle}>Add Article</Button>
                 ]}
 
             >
