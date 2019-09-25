@@ -1,10 +1,6 @@
 import React from 'react';
 import { Form, Modal, Input } from 'antd';
 
-// Removed CSS to eliminate conflict with ANTD
-// import '../css/modal.css';
-
-// changed name to ArticleModal to elimnate conflicts with antd Modal
 export default function ArticleModal(props) {
     const { hideModal, addArticle, modalDisplay } = props;
 
