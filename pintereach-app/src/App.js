@@ -8,7 +8,7 @@ import PrivateRoute from "./components/PrivateRoute";
 //import ArticleList from './components/ArticleList';
 //import Menu from "./components/Menu";
 import Modal from "./components/Modal";
-import ArticleCard from "./components/ArticleCard";
+// import ArticleCard from "./components/ArticleCard";
 
 function App() {
   return (

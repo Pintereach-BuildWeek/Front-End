@@ -1,16 +1,16 @@
 import React from 'react';
 import { Card, Icon, Button } from 'antd';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const ArticleCard = (props) => {
   const { id, mustRead, imgUrl, title, summary } = props;
 
   const { Meta } = Card;
 
-  function preventDefault(e) {
-    e.preventDefault();
-    console.log('Clicked! But prevent default.');
-  }
+  // function preventDefault(e) {
+  //   e.preventDefault();
+  //   console.log('Clicked! But prevent default.');
+  // }
 
   console.log(props)
 
