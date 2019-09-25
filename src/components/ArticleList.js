@@ -3,7 +3,7 @@ import SearchForm from "./SearchForm";
 import ArticleCard from './ArticleCard';
 
 
-function ArticleList() {
+function ArticleList(data) {
     const [articleList, setArticleList] = useState(data);
     const {id, mustRead, imgUrl, title, category, summary} = data;
 
