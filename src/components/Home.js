@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Button } from 'antd';
 
 import ArticleList from './ArticleList';
@@ -9,7 +10,7 @@ import Menu from './Menu';
 import { articlesArray } from '../data';
 
 const Home = () => {
-  const [articles, setArticles] = useState(articlesArray);
+  const [articles, setArticles] = useState([]);
   // State for Menu, ArticleModal
 
   const [menuDisplay, setMenuDisplay] = useState({ visible: false, placement: 'left' });
@@ -72,7 +73,15 @@ const Home = () => {
     console.log(toggleState)
   }
 
-
+  useEffect(() => {
+    axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
+      .then(response => {
+        setArticles(response.data);
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
+  },[]);
 
   return (
     <>
@@ -85,7 +94,7 @@ const Home = () => {
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} showModal={showModal} hideModal={hideModal} />
 
-      <ArticleList  data={ articlesArray } 
+      <ArticleList  data={articles} 
                     setMustRead={setMustRead}
                     deleteArticle={deleteArticle}/>
 
