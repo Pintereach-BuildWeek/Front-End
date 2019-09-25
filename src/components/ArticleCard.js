@@ -2,8 +2,7 @@ import React from 'react';
 import { Card, Icon, Button, Col } from 'antd';
 
 const ArticleCard = (props) => {
-  const { id, mustRead, imgUrl, title, summary, category, setMustRead, deleteArticle } = props;
-
+  const { id, mustRead, imgUrl, title, summary, category, setMustRead, deleteArticle, link } = props;
   const { Meta } = Card;
 
 
@@ -15,6 +14,7 @@ const ArticleCard = (props) => {
   return (
     // card fragment
     <>
+      <a href={link}>
       <Col xs={18} sm={14} md={10} lg={8} xl={7} >
         <Card
           hoverable
@@ -59,7 +59,7 @@ const ArticleCard = (props) => {
 
         </Card >
       </Col>
-
+      </a>
     </>
   )
 

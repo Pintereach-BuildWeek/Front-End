@@ -6,7 +6,6 @@ import ArticleCard from './ArticleCard';
 function ArticleList({ data, setMustRead, deleteArticle }) {
     // const [articleList, setArticleList] = useState(data);
     // const {id, mustRead, imgUrl, title, category, summary} = data;
-    debugger
 
     return (
         <>
@@ -24,6 +23,7 @@ function ArticleList({ data, setMustRead, deleteArticle }) {
                                     // title={entry.title}
                                     category={entry.category}
                                     // summary={entry.summary}
+                                    link={entry.link}
                                     />
                         )
 
