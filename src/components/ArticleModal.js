@@ -20,7 +20,7 @@ export default function ArticleModal(props) {
 
     return (
         <>
-            {/* <div className='blur'></div> */}
+
             {/* Modal visible will need to be a boolean infomed by state passed fromm login.
             
                 The form will also need state to manage where the data is sent.*/}
@@ -34,21 +34,9 @@ export default function ArticleModal(props) {
                 footer={[
                     <Button form='articleForm' key='submit' htmlType='submit' onClick={clickAddArticle}>Add Article</Button>
                 ]}
-
             >
-                {/* <div>
-                    <Button className='close' onClick={closeModal}>Close</Button>
-                </div> */}
-                <Form
-                // form='articleForm'
-                // onSubmit={event => {
-                //     event.preventDefault()
-                //     if (!article.url || !article.title) return
-                //     console.log(`onSubmit from form`);
-                //     addArticle(article)
-                //     setArticle(initialFormState)
-                // }}
-                >
+
+                <Form>
 
                     <label htmlFor='URL'>URL</label>
                     <Input type='text' name='link' value={article.link} onChange={handleInputChange} />
@@ -58,16 +46,7 @@ export default function ArticleModal(props) {
                     <Input type='text' name='summary' value={article.summary} onChange={handleInputChange} />
                     <label htmlFor='category'>Tags</label>
                     <Input type='text' name='category' value={article.category} onChange={handleInputChange} />
-                    <div>
-                        {/* <Button type='submit' onClick={addArticle}>Add Article</Button> */}
-                    </div>
                 </Form>
-                {/* Buttons below are replaced in <Modal footer= ... /> */}
-                {/* <div className='modal-btns'>
-                    <Button className='cancel' onClick={closeModal}>Cancel</Button>
-                    <Button className='add' onClick={addArticle}>Add</Button>
-                </div> */}
-
             </Modal>
         </>
     );
