@@ -1,25 +1,64 @@
 import React from 'react';
-import '../css/menu.css';
+// import '../css/menu.css';
 import { Link } from 'react-router-dom';
+import { Drawer, Button, Switch } from 'antd';
 
-export default function Menu (props) {
-    const { articles, addLink, closeMenu } = props;
+// import { articlesArray } from '../data';
+
+
+export default function Menu(props) {
+
+    const { articles, hideMenu, menuDisplay, showModal, filterMustRead } = props;
 
     const categories = articles
-                        .map(article => article.category)
-                        .reduce((acc, currValue) => {
-                            acc[currValue] ? acc[currValue]++: acc[currValue] = 1;
-                            return acc;
-                        }, {});
+        .map(article => article.category)
+        .reduce((acc, currValue) => {
+            acc[currValue] ? acc[currValue]++ : acc[currValue] = 1;
+            return acc;
+        }, {});
 
     return (
-        <>
-            <div className='blur'></div>
-            <div className='menu'>
-                <div className='apptitle'>
+        <div>
+            <Drawer
+                title="Menu"
+                placement='left'
+                closable={true}
+                onClose={hideMenu}
+                visible={menuDisplay.visible}
+            >
+
+                <Button onClick={() => {
+                    hideMenu();
+                    showModal();
+                }}>Add Article</Button>
+                <div className='categories'>
+                    <h3>Categories</h3>
+                    {
+                        Object.keys(categories).sort().map(category => {
+                            return (
+                                <Link to={category}>
+                                    <p>{category}: {categories[category]}</p>
+                                </Link>
+                            );
+                        })
+                    }
+                </div>
+                <div className='options'>
+                    <h3>Options</h3>
+                    <h4>Must Read Only</h4>
+                    <Switch defaultUnChecked onChange={filterMustRead} />
+
+                </div>
+
+            </Drawer>
+        </div>
+    );
+}
+
+{/* <div className='apptitle'>
                     <h1>Pintereach</h1>
                     <button onClick={closeMenu}>Close</button>
-                </div> 
+                </div>
                 <button id='add-link' onClick={() => {
                     closeMenu();
                     addLink();
@@ -32,7 +71,7 @@ export default function Menu (props) {
                                 <Link to={category}>
                                     <p>{category}: {categories[category]}</p>
                                 </Link>
-                            );                        
+                            );
                         })
                     }
                 </div>
@@ -42,8 +81,4 @@ export default function Menu (props) {
                         <p>Show Must Read only</p>
                         <button>On/Off</button>
                     </div>
-                </div>
-            </div>
-        </>
-    );
-}
+                </div> */}

@@ -6,48 +6,46 @@ import { Form, Modal, Icon, Input, Button } from 'antd';
 
 // changed name to ArticleModal to elimnate conflicts with antd Modal
 export default function ArticleModal(props) {
-    const { closeModal, addArticle } = props;
-
+    const { hideModal, addArticle, modalDisplay } = props;
 
 
 
     return (
         <>
-            <div className='blur'></div>
+            {/* <div className='blur'></div> */}
             {/* Modal visible will need to be a boolean infomed by state passed fromm login.
             
                 The form will also need state to manage where the data is sent.*/}
             <Modal
                 title='Add New Article'
-                visible='true'
-                footer={[
-                    <Button key="back" onClick={''}>
-                        Close
-            </Button>,
-                    <Button key="submit" type="primary" loading={''} onClick={''}>
-                        Submit
-            </Button>,
-                ]}
+                visible={modalDisplay.visible}
+                okText="Add Article"
+                onCancel={hideModal}
+                onOk={addArticle}
+
             >
                 {/* <div>
                     <Button className='close' onClick={closeModal}>Close</Button>
                 </div> */}
-                <div>
-                    <label htmlFor='URL'>URL</label>
-                    <Input id='URL' />
-                </div>
-                <div>
-                    <label htmlFor='title'>Title</label>
-                    <Input id='title' />
-                </div>
-                <div>
-                    <label htmlFor='summary'>Summary</label>
-                    <Input id='summary' />
-                </div>
-                <div>
-                    <label htmlFor='category'>Category</label>
-                    <Input id='category' />
-                </div>
+                <Form>
+
+                    <div>
+                        <label htmlFor='URL'>URL</label>
+                        <Input id='URL' />
+                    </div>
+                    <div>
+                        <label htmlFor='title'>Title</label>
+                        <Input id='title' />
+                    </div>
+                    <div>
+                        <label htmlFor='summary'>Summary</label>
+                        <Input id='summary' />
+                    </div>
+                    <div>
+                        <label htmlFor='category'>Category</label>
+                        <Input id='category' />
+                    </div>
+                </Form>
                 {/* Buttons below are replaced in <Modal footer= ... /> */}
                 {/* <div className='modal-btns'>
                     <Button className='cancel' onClick={closeModal}>Cancel</Button>
