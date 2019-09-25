@@ -4,8 +4,8 @@ import ArticleCard from './ArticleCard';
 
 
 function ArticleList(data) {
-    const [articleList, setArticleList] = useState(data);
-    const {id, mustRead, imgUrl, title, category, summary} = data;
+    // const [articleList, setArticleList] = useState(data);
+    // const {id, mustRead, imgUrl, title, category, summary} = data;
 
 
     return (

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Icon, Button, Row, Col } from 'antd';
-import { Link } from 'react-router-dom';
+import { Card, Icon, Button, Col } from 'antd';
 
 const ArticleCard = (props) => {
   const { id, mustRead, imgUrl, title, summary, category, setMustRead, deleteArticle } = props;
@@ -8,10 +7,10 @@ const ArticleCard = (props) => {
   const { Meta } = Card;
 
 
-  function preventDefault(e) {
-    e.preventDefault();
-    console.log('Clicked! But prevent default.');
-  }
+  // function preventDefault(e) {
+  //   e.preventDefault();
+  //   console.log('Clicked! But prevent default.');
+  // }
 
   return (
     // card fragment

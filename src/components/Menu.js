@@ -54,31 +54,3 @@ export default function Menu(props) {
         </div>
     );
 }
-
-{/* <div className='apptitle'>
-                    <h1>Pintereach</h1>
-                    <button onClick={closeMenu}>Close</button>
-                </div>
-                <button id='add-link' onClick={() => {
-                    closeMenu();
-                    addLink();
-                }}>Add a Link</button>
-                <div className='categories'>
-                    <h3>Categories</h3>
-                    {
-                        Object.keys(categories).sort().map(category => {
-                            return (
-                                <Link to={category}>
-                                    <p>{category}: {categories[category]}</p>
-                                </Link>
-                            );
-                        })
-                    }
-                </div>
-                <div className='options'>
-                    <h3>Options</h3>
-                    <div>
-                        <p>Show Must Read only</p>
-                        <button>On/Off</button>
-                    </div>
-                </div> */}
