@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Icon, Button, Col } from 'antd';
 import Microlink from '@microlink/react';
 
@@ -7,15 +7,11 @@ const ArticleCard = (props) => {
   const { Meta } = Card;
 
 
-  // function preventDefault(e) {
-  //   e.preventDefault();
-  //   console.log('Clicked! But prevent default.');
-  // }
 
   return (
     // card fragment
     <>
-      <Col xs={18} sm={14} md={10} lg={8} xl={7} >
+      <Col xs={18} sm={14} md={12} lg={10} xl={7} style={{ border: '1px solid red', marginBottom: 'auto', height: '40rem', display: 'flex', padding: 'auto', justifyContent: 'center' }}>
 
         <Card
 
@@ -27,7 +23,7 @@ const ArticleCard = (props) => {
           cover={
             <Microlink url={link} />
           }
-          style={{ width: 320, marginBottom: '1rem' }}
+          style={{ width: '24rem', marginBottom: 'auto' }}
           actions={[
             <Button type={(mustRead ? 'primary' : 'dashed')} onClick={() => setMustRead(id)} >Must Read</Button>,
             <Button onClick={() => deleteArticle(id)} ><Icon type="delete" /></Button>

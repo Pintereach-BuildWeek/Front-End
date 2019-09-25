@@ -59,11 +59,13 @@ const Home = () => {
     setArticles(articles.filter(article => article.articleid !== id))
   }
 
-  const setMustRead = id => {
+  const setMustRead = articleid => {
     console.log(`mustRead clicked`);
-    console.log(id)
-    console.log(articles[id].mustRead);
-    articles[id].mustRead = !articles[id].mustRead
+    // console.log(articleid)
+    let index = articles.findIndex(entry => entry.articleid === articleid)
+    // console.log(index)
+    articles[index].mustRead = !articles[index].mustRead;
+    console.log(`item at index ${index} markted Must Read`)
   }
 
   // Menu functions
