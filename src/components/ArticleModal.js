@@ -1,10 +1,24 @@
-import React from 'react';
-import { Form, Modal, Input } from 'antd';
+import React, { useState } from 'react';
+import { Modal, Form, Input, Button } from 'antd';
 
 export default function ArticleModal(props) {
     const { hideModal, addArticle, modalDisplay } = props;
 
+    const initialFormState = { id: '', link: '', title: '', summary: '', category: '' };
 
+    const [article, setArticle] = useState(initialFormState);
+
+    const handleInputChange = e => {
+        const { name, value } = e.target
+        setArticle({ ...article, [name]: value })
+        console.log(article)
+    }
+
+    // const logArticle = () => {
+    //     console.log(`log article function ${article} function ${addArticle}`);
+
+    //     console.log(`logging addArticle article ${addArticle(article)}`)
+    // }
 
     return (
         <>
@@ -15,31 +29,39 @@ export default function ArticleModal(props) {
             <Modal
                 title='Add New Article'
                 visible={modalDisplay.visible}
-                okText="Add Article"
+                // okText="Add Article"
                 onCancel={hideModal}
-                onOk={addArticle}
+                // onOk={addArticle}
+
+                footer={[
+                    <Button form='articleForm' key='submit' htmlType='submit' onClick={addArticle}>Add Article</Button>
+                ]}
 
             >
                 {/* <div>
                     <Button className='close' onClick={closeModal}>Close</Button>
                 </div> */}
-                <Form>
+                <Form
+                // form='articleForm'
+                // onSubmit={event => {
+                //     event.preventDefault()
+                //     if (!article.url || !article.title) return
+                //     console.log(`onSubmit from form`);
+                //     addArticle(article)
+                //     setArticle(initialFormState)
+                // }}
+                >
 
+                    <label htmlFor='URL'>URL</label>
+                    <Input type='text' name='link' value={article.link} onChange={handleInputChange} />
+                    <label htmlFor='title'>Title</label>
+                    <Input type='text' name='title' value={article.title} onChange={handleInputChange} />
+                    <label htmlFor='summary'>Summary</label>
+                    <Input type='text' name='summary' value={article.summary} onChange={handleInputChange} />
+                    <label htmlFor='category'>Tags</label>
+                    <Input type='text' name='category' value={article.category} onChange={handleInputChange} />
                     <div>
-                        <label htmlFor='URL'>URL</label>
-                        <Input id='URL' />
-                    </div>
-                    <div>
-                        <label htmlFor='title'>Title</label>
-                        <Input id='title' />
-                    </div>
-                    <div>
-                        <label htmlFor='summary'>Summary</label>
-                        <Input id='summary' />
-                    </div>
-                    <div>
-                        <label htmlFor='category'>Category</label>
-                        <Input id='category' />
+                        {/* <Button type='submit' onClick={addArticle}>Add Article</Button> */}
                     </div>
                 </Form>
                 {/* Buttons below are replaced in <Modal footer= ... /> */}

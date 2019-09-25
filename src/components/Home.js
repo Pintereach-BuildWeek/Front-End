@@ -18,6 +18,8 @@ const Home = () => {
   //ArticleModal state
   const [modalDisplay, setModalDisplay] = useState({ visible: false });
 
+
+
   // Toggle State
   const [toggleState, setToggleState] = useState(false)
 
@@ -33,12 +35,20 @@ const Home = () => {
     setModalDisplay({ visible: false });
   }
 
+
+
+
   const addArticle = article => {
-    console.log('submit and add article pressed')
-    article.id = articles.length + 1;
+    // console.log('submit and add article pressed')
+    article.articleid = Date.now();
+    // console.log(article)
     setArticles([...articles, article]);
     setModalDisplay({ visible: false });
+    // console.log(articles)
+    return 1
   }
+
+  // console.log(articles);
 
   // Card Functions
 
@@ -76,12 +86,13 @@ const Home = () => {
   useEffect(() => {
     axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
       .then(response => {
+        console.log(response.data)
         setArticles(response.data);
       })
       .catch(error => {
         console.log(error.message);
       })
-  },[]);
+  }, []);
 
   return (
     <>
@@ -90,11 +101,11 @@ const Home = () => {
 
       <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
 
-      <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} showModal={showModal} hideModal={hideModal} />
+      <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} hideModal={hideModal} />
 
-      <ArticleList  data={articles} 
-                    setMustRead={setMustRead}
-                    deleteArticle={deleteArticle}/>
+      <ArticleList data={articles}
+        setMustRead={setMustRead}
+        deleteArticle={deleteArticle} />
 
     </>
 
