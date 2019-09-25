@@ -15,7 +15,7 @@ function ArticleList({ data, setMustRead, deleteArticle }) {
                                         deleteArticle={deleteArticle}
                                         key={entry.articleid}
                                         id={entry.articleid}
-                                        mustRead={entry.id % 2 === 0 ? false : true}
+                                        mustRead={entry.articleid % 2 === 0 ? false : true}
                                         imgUrl='https://source.unsplash.com/random'
                                         title='Title goes here.'
                                         category={entry.category}
