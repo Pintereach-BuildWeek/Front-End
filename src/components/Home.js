@@ -88,7 +88,6 @@ const Home = () => {
   useEffect(() => {
     axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
       .then(response => {
- christine-fletcher02
         setArticles(response.data);  //provides cat, link and id
 
       })
@@ -102,16 +101,15 @@ const Home = () => {
       <Button onClick={() => showModal()}>Add Article</Button>
       <Button onClick={() => showMenu()}>Menu</Button>
 
-      <SearchForm articles={articles}/>
+      <SearchForm articles={articles} />
 
       <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} hideModal={hideModal} />
 
- christine-fletcher02
-      <ArticleList  articles={articles} 
-                    setMustRead={setMustRead}
-                    deleteArticle={deleteArticle}/>
+      <ArticleList articles={articles}
+        setMustRead={setMustRead}
+        deleteArticle={deleteArticle} />
 
 
     </>
