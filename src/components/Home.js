@@ -85,8 +85,6 @@ const Home = () => {
 
   return (
     <>
-      {/* 
-      <Menu /> */}
       <Button onClick={() => showModal()}>Add Article</Button>
       <Button onClick={() => showMenu()}>Menu</Button>
 
@@ -97,22 +95,6 @@ const Home = () => {
       <ArticleList  data={articles} 
                     setMustRead={setMustRead}
                     deleteArticle={deleteArticle}/>
-
-      {/* {
-        articles.map(entry =>
-          <ArticleCard
-            setMustRead={setMustRead}
-            deleteArticle={deleteArticle}
-            key={entry.id}
-            id={entry.id}
-            mustRead={entry.mustRead}
-            imgUrl={entry.imgUrl}
-            title={entry.title}
-            category={entry.category}
-            summary={entry.summary} />
-        )
-
-      } */}
 
     </>
 
