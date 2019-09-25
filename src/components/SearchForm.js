@@ -1,36 +1,37 @@
-import React, {useState, useEffect} from "react";
-import {Input} from 'antd';
-// import {data} from "../../src/data";
+import React, { useState, useEffect } from "react";
+import { Input } from 'antd';
 
-const {Search} = Input;
+const { Search } = Input;
 
-function SearchForm({articles}) {
-    
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+function SearchForm({ displayedArticles, setDisplayedArticles, articles }) {
 
-    useEffect(() => {
-       const results = articles.filter(article =>
-        article.toLowerCase().includes(searchTerm)
-        );
-        setSearchResults(results);
-    }, [searchTerm]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
 
 
-//    const handleChange = event => {
-//        setSearchTerm(event.target.value);
-//    };
+    const results = displayedArticles.filter(article =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-        return(
-            <div>
-              <Search
-                placeholder="input search text"
-                onSearch={value => console.log(value)}
-                style={{ width: 200 }}
-                
-              />
-              </div>
-              );
+    searchTerm.length === 0 ? setDisplayedArticles(articles) : setDisplayedArticles(results);
+
+
+  }, [searchTerm]);
+
+
+
+
+  return (
+    <div>
+      <Search
+        placeholder="input search text"
+        onSearch={value => setSearchTerm(value)}
+
+
+      />
+    </div>
+  );
 }
 
 export default SearchForm;

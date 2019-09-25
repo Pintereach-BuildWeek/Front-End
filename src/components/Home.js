@@ -10,11 +10,13 @@ import Menu from './Menu';
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
+
+  // State to manage what is displayed on ArticleList
+  const [displayedArticles, setDisplayedArticles] = useState(articles)
+
+  console.log(displayedArticles)
+
   // State for Menu, ArticleModal
-
-  // previous state to revert after view changes like showMustRead
-  // const [prevArticleState, setPrevArticleState] = useState(articles)
-
   const [menuDisplay, setMenuDisplay] = useState({ visible: false });
 
   //ArticleModal state
@@ -51,22 +53,24 @@ const Home = () => {
 
   }
 
-  console.log(articles);
+  // console.log(articles);
 
   // Card Functions
 
   const deleteArticle = id => {
     console.log(`delete clicked`)
-    setArticles(articles.filter(article => article.articleid !== id))
+    setArticles(articles.filter(article => article.articleid !== id));
+    setDisplayedArticles(articles)
   }
 
+  // Update for articleDisplay
   const setMustRead = articleid => {
     console.log(`mustRead clicked`);
     // console.log(articleid)
     let index = articles.findIndex(entry => entry.articleid === articleid)
     // console.log(index)
     articles[index].mustRead = !articles[index].mustRead;
-    console.log(`item at index ${index} markted Must Read`)
+    console.log(`item at index ${index} marked Must Read`)
   }
 
   // Menu functions
@@ -80,6 +84,7 @@ const Home = () => {
     setMenuDisplay({ visible: false });
   }
 
+  // Update for articleDisplay
   const filterMustRead = () => {
     console.log(`delete clicked`)
     // setToggleState(!toggleState)
@@ -91,7 +96,9 @@ const Home = () => {
   useEffect(() => {
     axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
       .then(response => {
-        setArticles(response.data);  //provides cat, link and id
+        setArticles(response.data);
+        // setDisplayedArticles to articles
+        setDisplayedArticles(response.data);
 
       })
       .catch(error => {
@@ -104,13 +111,13 @@ const Home = () => {
       <Button onClick={() => showModal()}>Add Article</Button>
       <Button onClick={() => showMenu()}>Menu</Button>
 
-      <SearchForm articles={articles} />
+      <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} />
 
       <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} hideModal={hideModal} />
 
-      <ArticleList articles={articles}
+      <ArticleList articles={displayedArticles}
         setMustRead={setMustRead}
         deleteArticle={deleteArticle} />
 

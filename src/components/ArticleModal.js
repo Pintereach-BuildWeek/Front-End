@@ -6,6 +6,7 @@ export default function ArticleModal(props) {
 
     const initialFormState = { articleid: '', link: '', title: '', summary: '', category: '' };
 
+    // State to handle content of article form
     const [article, setArticle] = useState(initialFormState);
 
     const handleInputChange = e => {
@@ -20,16 +21,10 @@ export default function ArticleModal(props) {
 
     return (
         <>
-
-            {/* Modal visible will need to be a boolean infomed by state passed fromm login.
-            
-                The form will also need state to manage where the data is sent.*/}
             <Modal
                 title='Add New Article'
                 visible={modalDisplay.visible}
-                // okText="Add Article"
                 onCancel={hideModal}
-                // onOk={addArticle}
 
                 footer={[
                     <Button form='articleForm' key='submit' htmlType='submit' onClick={clickAddArticle}>Add Article</Button>
