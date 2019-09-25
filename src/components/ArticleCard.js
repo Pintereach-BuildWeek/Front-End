@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Card, Icon, Button, Col } from 'antd';
 import Microlink from '@microlink/react';
 
@@ -11,7 +11,7 @@ const ArticleCard = (props) => {
   return (
     // card fragment
     <>
-      <Col xs={18} sm={14} md={12} lg={10} xl={7} style={{ border: '1px solid red', marginBottom: 'auto', height: '40rem', display: 'flex', padding: 'auto', justifyContent: 'center' }}>
+      <Col xs={18} sm={14} md={12} lg={10} xl={7} style={{ marginBottom: 'auto', height: '40rem', display: 'flex', padding: 'auto', justifyContent: 'center' }}>
 
         <Card
 
@@ -49,15 +49,7 @@ const ArticleCard = (props) => {
               <p>{category}</p>
             </span>
           </div>
-          {/* 'must read' button, delete    div  should have absolute positioning at top left and right respectively*/}
-          {/* Must Read should be conditional on the boolean of article.mustRead */}
 
-          {/* toggle mustRead: true or false */}
-          {/* <Button type={(mustRead ? 'primary' : 'dashed')}>Must Read</Button> */}
-          {/* link delete function to Icon */}
-
-          {/* <Icon type="delete" /> */}
-          {/* image, title, tags, description div  insdie link to open article in new tab*/}
 
         </Card >
 

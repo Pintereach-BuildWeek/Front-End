@@ -14,6 +14,9 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   // State for Menu, ArticleModal
 
+  // previous state to revert after view changes like showMustRead
+  // const [prevArticleState, setPrevArticleState] = useState(articles)
+
   const [menuDisplay, setMenuDisplay] = useState({ visible: false, placement: 'left' });
 
   //ArticleModal state
@@ -81,9 +84,9 @@ const Home = () => {
 
   const filterMustRead = () => {
     console.log(`delete clicked`)
-    setToggleState(!toggleState)
-    !toggleState ?
-      setArticles(articles.filter(article => article.mustRead === true)) : setArticles(articlesArray)
+    // setToggleState(!toggleState)
+    // !toggleState ?
+    //   setViewState(articles.filter(article => article.mustRead === true)) : setViewState(articles)
     console.log(toggleState)
   }
 
