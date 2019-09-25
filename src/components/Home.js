@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
 
-// import ArticleList from './ArticleList';
+import ArticleList from './ArticleList';
 import ArticleModal from './ArticleModal';
 import Menu from './Menu';
 import ArticleCard from './ArticleCard';
@@ -85,7 +85,9 @@ const Home = () => {
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} showModal={showModal} hideModal={hideModal} />
 
-      {
+      <ArticleList data={ articlesArray } />
+
+      {/* {
         articles.map(entry =>
           <ArticleCard
             setMustRead={setMustRead}
@@ -99,7 +101,7 @@ const Home = () => {
             summary={entry.summary} />
         )
 
-      }
+      } */}
 
     </>
 
