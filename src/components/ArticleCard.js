@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Icon, Button, Col } from 'antd';
 
 const ArticleCard = (props) => {
-  debugger
   const { id, mustRead, imgUrl, title, summary, category, setMustRead, deleteArticle } = props;
 
   const { Meta } = Card;

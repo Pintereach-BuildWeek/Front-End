@@ -3,8 +3,7 @@ import SearchForm from "./SearchForm";
 import ArticleCard from './ArticleCard';
 
 
-function ArticleList({ data }) {
-    debugger
+function ArticleList({ data, setMustRead, deleteArticle }) {
     // const [articleList, setArticleList] = useState(data);
     // const {id, mustRead, imgUrl, title, category, summary} = data;
 
@@ -16,12 +15,15 @@ function ArticleList({ data }) {
             {
                 
                 data.map(entry =>
-                    <ArticleCard id={entry.id} 
-                                 mustRead={entry.mustRead} 
-                                 imgUrl={entry.imgUrl} 
-                                 title={entry.title} 
-                                 category={entry.category} 
-                                 summary={entry.summary}/>
+                    <ArticleCard    setMustRead={setMustRead}
+                                    deleteArticle={deleteArticle}
+                                    key={entry.id}
+                                    id={entry.id}
+                                    mustRead={entry.mustRead}
+                                    imgUrl={entry.imgUrl}
+                                    title={entry.title}
+                                    category={entry.category}
+                                    summary={entry.summary}/>
                         )
 
             }

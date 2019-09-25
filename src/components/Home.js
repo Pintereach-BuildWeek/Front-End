@@ -85,7 +85,9 @@ const Home = () => {
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} showModal={showModal} hideModal={hideModal} />
 
-      <ArticleList data={ articlesArray } />
+      <ArticleList  data={ articlesArray } 
+                    setMustRead={setMustRead}
+                    deleteArticle={deleteArticle}/>
 
       {/* {
         articles.map(entry =>
