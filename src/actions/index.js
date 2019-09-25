@@ -39,9 +39,46 @@ export const signup = creds => dispatch => {
     });
 };
 
-// .ADD & .DELETE TO BE ADDED 
+// ADD ARTICLE
 
+export const ADD_ARTICLE_START = "ADD_ARTICLE_START";
+export const ADD_ARTICLE_SUCCESS = "ADD_ARTICLE_SUCCESS";
+export const ADD_ARTICLE_FAILURE = "ADD_ARTICLE_FAILURE";
 
+export const addArticle = article => dispatch => {
+  dispatch({ type: ADD_ARTICLE_START });
+  axios
+    .post("", article, {                                         // <- ADD PATH
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: ADD_ARTICLE_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// DELETE ARTICLE
+
+export const DELETE_START = "DELETE_START";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_FAILURE = "DELETE_FAILURE";
+
+export const deleteArticle = (article) => dispatch => {
+  dispatch({ type: DELETE_START });
+  axios
+    .delete("", {                                                   // <- ADD PATH
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      window.location.reload();
+    })
+
+    .catch(err => {
+      dispatch({ type: DELETE_FAILURE, payload: err.response });
+    });
+};
 
 // GET ALL
 
