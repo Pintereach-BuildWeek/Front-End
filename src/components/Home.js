@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from 'antd';
+import SearchForm from './SearchForm';
 
 import ArticleList from './ArticleList';
 import ArticleModal from './ArticleModal';
@@ -76,7 +77,7 @@ const Home = () => {
   useEffect(() => {
     axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
       .then(response => {
-        setArticles(response.data);
+        setArticles(response.data);  //provides cat, link and id
       })
       .catch(error => {
         console.log(error.message);
@@ -87,6 +88,8 @@ const Home = () => {
     <>
       <Button onClick={() => showModal()}>Add Article</Button>
       <Button onClick={() => showMenu()}>Menu</Button>
+
+      <SearchForm articles={articles}/>
 
       <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
 
