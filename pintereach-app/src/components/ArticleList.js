@@ -1,16 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import SearchForm from "./SearchForm";
 import ArticleCard from './ArticleCard';
 
 
-function ArticleList() {
-    const [articleList, setArticleList] = useState(data);
-    const {id, mustRead, imgUrl, title, category, summary} = data;
+function ArticleList({title, category, must}) {
+   
 
 
     return (
         <>
-        <SearchForm/>
+       
         <div>
             {
                 

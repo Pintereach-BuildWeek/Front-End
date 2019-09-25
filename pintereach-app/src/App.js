@@ -9,8 +9,9 @@ import PrivateRoute from "./components/PrivateRoute";
 //import Menu from "./components/Menu";
 import Modal from "./components/Modal";
 import ArticleCard from "./components/ArticleCard";
+import Home from "../src/components/Home";
 
-function App() {
+function App() { 
   return (
     <Router>
     <div className="App">
@@ -18,8 +19,9 @@ function App() {
         <NavBar/>
       </div>
         <div className="body">
-          <Route exact path="/" component={Signup} />
-          <PrivateRoute exact path="/protected" component={Modal} />
+          {/* <Route exact path="/" component={Signup} /> */}
+          {/* <PrivateRoute exact path="/protected" component={Modal} /> */}
+          <Home/>
         </div>
     </div>
     </Router>
