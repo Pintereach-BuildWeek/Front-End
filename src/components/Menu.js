@@ -36,7 +36,7 @@ export default function Menu(props) {
                     {
                         Object.keys(categories).sort().map(category => {
                             return (
-                                <Link to={category}>
+                                <Link to={category} key={category}>
                                     <p>{category}: {categories[category]}</p>
                                 </Link>
                             );
