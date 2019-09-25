@@ -13,16 +13,16 @@ function ArticleList({ data, setMustRead, deleteArticle }) {
         <div>
             {
                 
-                data.map(entry =>
+                data.map(entry => 
                     <ArticleCard    setMustRead={setMustRead}
                                     deleteArticle={deleteArticle}
-                                    key={entry.id}
-                                    id={entry.id}
-                                    // mustRead={entry.mustRead}
+                                    key={entry.articleid}
+                                    id={entry.articleid}
+                                    mustRead={entry.articleid % 2 === 0 ? false : true}
                                     imgUrl='https://source.unsplash.com/random'
-                                    // title={entry.title}
+                                    title='Title goes here.'
                                     category={entry.category}
-                                    // summary={entry.summary}
+                                    summary='Summary goes here.'
                                     link={entry.link}
                                     />
                         )
