@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer, Button, Switch } from 'antd';
 
-// import { articlesArray } from '../data';
 
 
 export default function Menu(props) {

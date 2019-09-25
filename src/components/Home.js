@@ -6,9 +6,7 @@ import SearchForm from './SearchForm';
 import ArticleList from './ArticleList';
 import ArticleModal from './ArticleModal';
 import Menu from './Menu';
-// import ArticleCard from './ArticleCard';
 
-import { articlesArray } from '../data';
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -17,7 +15,7 @@ const Home = () => {
   // previous state to revert after view changes like showMustRead
   // const [prevArticleState, setPrevArticleState] = useState(articles)
 
-  const [menuDisplay, setMenuDisplay] = useState({ visible: false, placement: 'left' });
+  const [menuDisplay, setMenuDisplay] = useState({ visible: false });
 
   //ArticleModal state
   const [modalDisplay, setModalDisplay] = useState({ visible: false });
