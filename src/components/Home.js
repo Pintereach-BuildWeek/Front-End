@@ -95,7 +95,7 @@ const Home = () => {
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} showModal={showModal} hideModal={hideModal} />
 
-      <ArticleList  data={articles} 
+      <ArticleList  articles={articles} 
                     setMustRead={setMustRead}
                     deleteArticle={deleteArticle}/>
 

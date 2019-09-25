@@ -1,13 +1,13 @@
 import React from "react";
 import ArticleCard from './ArticleCard';
 
-function ArticleList({ data, setMustRead, deleteArticle }) {
+function ArticleList({ articles, setMustRead, deleteArticle }) {
 
     return (
         <div className='articles'>
             {
                 
-                data.map(entry => 
+                articles.map(entry => 
                     <ArticleCard    setMustRead={setMustRead}
                                     deleteArticle={deleteArticle}
                                     key={entry.articleid}

@@ -1,5 +1,5 @@
-import React from "react";
-import {input} from 'antd';
+import React, {useState, useEffect} from "react";
+import {Input} from 'antd';
 // import {data} from "../../src/data";
 
 const {Search} = Input;
@@ -17,9 +17,9 @@ function SearchForm({articles}) {
     }, [searchTerm]);
 
 
-   const handleChange = event => {
-       setSearchTerm(event.target.value);
-   };
+//    const handleChange = event => {
+//        setSearchTerm(event.target.value);
+//    };
 
         return(
             <div>
@@ -27,8 +27,7 @@ function SearchForm({articles}) {
                 placeholder="input search text"
                 onSearch={value => console.log(value)}
                 style={{ width: 200 }}
-                onChange={handleChange}
-                value={searchTerm}
+                
               />
               </div>
               );
