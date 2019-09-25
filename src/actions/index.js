@@ -48,7 +48,7 @@ export const ADD_ARTICLE_FAILURE = "ADD_ARTICLE_FAILURE";
 export const addArticle = article => dispatch => {
   dispatch({ type: ADD_ARTICLE_START });
   axios
-    .post("", article, {                                         // <- ADD PATH
+    .post("bw-pintereach.herokuapp.com/articles/createnewarticle", article, {                                         // <- ADD PATH
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
@@ -68,7 +68,7 @@ export const DELETE_FAILURE = "DELETE_FAILURE";
 export const deleteArticle = (article) => dispatch => {
   dispatch({ type: DELETE_START });
   axios
-    .delete("", {                                                   // <- ADD PATH
+    .delete(`bw-pintereach.herokuapp.com/articles/${article.articleId}`, {                                                   // <- ADD PATH
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
