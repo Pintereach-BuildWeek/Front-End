@@ -1,34 +1,36 @@
-/*import React from "react";
-import {data} from "../../src/data";
+import React, {useState, useEffect} from "react";
+import {Input} from 'antd';
+// import {data} from "../../src/data";
 
-function SearchForm() {
-    const [articles, setArticles] = useState([]);
-    const [search, setSearch] = useState("");
-    const [query, setQuery] = useState('');
+const {Search} = Input;
 
-    useEffect((item) => {
-        getArticles(item);
-    }, [query])
+function SearchForm({articles}) {
+    
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
 
-    const getArticles = data.articles.filter(category => 
-        category.toLowerCase().includes(search)
+    useEffect(() => {
+       const results = articles.filter(article =>
+        article.toLowerCase().includes(searchTerm)
         );
-        setArticles(data.articles)
+        setSearchResults(results);
+    }, [searchTerm]);
 
-    const updateSearch = e => {
-        setSearch(e.target.value);
-    };
-    const getSearch = e => {
-        e.preventDefault();
-        setQuery(search);
-        setSearch('');
-    }    
 
-    return (
-        <form onSubmit={getSearch}>
-            <input value={search} Placeholder="Search" onChange={updateSearch}/>
-            <button type="submit">Search</button>
-        </form>
-    )
+//    const handleChange = event => {
+//        setSearchTerm(event.target.value);
+//    };
+
+        return(
+            <div>
+              <Search
+                placeholder="input search text"
+                onSearch={value => console.log(value)}
+                style={{ width: 200 }}
+                
+              />
+              </div>
+              );
 }
-export default SearchForm;*/
+
+export default SearchForm;
