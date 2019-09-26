@@ -12,10 +12,11 @@ const { Header, Content } = Layout;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-
+  
   // State to manage what is displayed on ArticleList
-  const [displayedArticles, setDisplayedArticles] = useState(articles)
-
+  const [originalArticles, setOriginalArticles] = useState([]);
+  
+  // console.log('1: articles === originalArticles', originalArticles === articles);
   // console.log(displayedArticles)
 
   // State for Menu, ArticleModal
@@ -78,6 +79,7 @@ const Home = () => {
     updatedArticleList[idx].mustRead = !updatedArticleList[idx].mustRead;
     setArticles(updatedArticleList);
     // console.log(`item at index ${index} marked Must Read`)
+    // console.log('2: articles === originalArticles', originalArticles === articles);
   }
 
   // Menu functions
@@ -92,19 +94,19 @@ const Home = () => {
   }
 
   // Update for articleDisplay
-  const filterMustRead = () => {
-
-    setToggleState(!toggleState)
-
-    !toggleState ?
-      setDisplayedArticles(articles.filter(article => article.mustRead === true)) : setDisplayedArticles(articles)
-    console.log(toggleState)
+  const filterMustRead = (e) => {
+    if (e) {
+      setArticles([...articles].filter(article => article.mustRead === true));
+    } else {
+      setArticles(originalArticles);
+    }
   }
 
   useEffect(() => {
     axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
       .then(response => {
-        setArticles(response.data);
+        setArticles([...response.data]);
+        setOriginalArticles([...response.data]);
         // setDisplayedArticles to articles
         // setDisplayedArticles(response.data);
 

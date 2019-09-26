@@ -50,7 +50,7 @@ export default function Menu(props) {
             <div className='options'>
                 <h3>Options</h3>
                 <h4>Must Read Only</h4>
-                <Switch defaultUnChecked onChange={filterMustRead} />
+                <Switch defaultunchecked onClick={e => filterMustRead(e)} />
             </div>
 
         </Drawer>
