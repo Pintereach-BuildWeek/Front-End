@@ -10,7 +10,6 @@ const NavBar = () => {
       <NavLink to="/" className="NavBtn">  Signup  </NavLink>
       <NavLink to="/" className="NavBtn">  Login  </NavLink>
       <NavLink exact to="/home" className="NavBtn"> Your Profile  </NavLink>
-      <NavLink to="/" className="NavBtn">  Must Reads  </NavLink>
       <NavLink to="/" className="NavBtn">  Logout  </NavLink>
 
     </div>
