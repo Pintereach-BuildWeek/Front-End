@@ -102,8 +102,10 @@ const Home = () => {
     }
   }
 
+  const [apiUrl, setApiUrl] = useState('http://bw-pintereach.herokuapp.com/articles/articles');
+
   useEffect(() => {
-    axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
+    axios.get(apiUrl)
       .then(response => {
         setArticles([...response.data]);
         setOriginalArticles([...response.data]);
@@ -114,7 +116,7 @@ const Home = () => {
       .catch(error => {
         console.log(error.message);
       })
-  }, []);
+  }, [apiUrl]);
 
   return (
     <Layout>
@@ -129,7 +131,15 @@ const Home = () => {
         {/* <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} /> */}
       </PageHeader>
 
-      <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
+      <Menu 
+        showMenu={showMenu} 
+        hideMenu={hideMenu} 
+        menuDisplay={menuDisplay} 
+        articles={articles} 
+        showModal={showModal} 
+        filterMustRead={filterMustRead} 
+        setApiUrl={setApiUrl}
+      />
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} hideModal={hideModal} />
 

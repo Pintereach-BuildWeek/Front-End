@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Drawer, Button, Switch } from 'antd';
 
 
 
 export default function Menu(props) {
 
-    const { articles, hideMenu, menuDisplay, showModal, filterMustRead } = props;
+    const { articles, hideMenu, menuDisplay, showModal, filterMustRead, setApiUrl } = props;
 
     const categories = articles
         .map(article => article.category)
@@ -40,9 +39,10 @@ export default function Menu(props) {
                 {
                     Object.keys(categories).sort().map(category => {
                         return (
-                            <Link to={category} key={category}>
-                                <p>{category}: {categories[category]}</p>
-                            </Link>
+                            <button key={category} onClick={() => {
+                                debugger
+                                setApiUrl(`https://bw-pintereach.herokuapp.com/articles/${category}`)
+                            }} >{category}: {categories[category]}</button>
                         );
                     })
                 }
