@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Drawer, Button, Switch } from 'antd';
 
 
 
 export default function Menu(props) {
 
-    const { articles, hideMenu, menuDisplay, showModal, filterMustRead } = props;
+    const { articles, hideMenu, menuDisplay, showModal, filterMustRead, setApiUrl } = props;
 
     const categories = articles
         .map(article => article.category)
@@ -37,20 +36,29 @@ export default function Menu(props) {
                 style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', margin: '2rem 0' }}>
 
                 <h3>Categories</h3>
+                <Button 
+                    block 
+                    style={ {marginBottom: '5px'} }
+                    onClick={() => setApiUrl('https://bw-pintereach.herokuapp.com/articles/articles')}
+                >All</Button>
                 {
                     Object.keys(categories).sort().map(category => {
                         return (
-                            <Link to={category} key={category}>
-                                <p>{category}: {categories[category]}</p>
-                            </Link>
+                            <Button 
+                                block 
+                                key={category} 
+                                style={ {marginBottom: '5px'} }
+                                onClick={() => {
+                                setApiUrl(`https://bw-pintereach.herokuapp.com/articles/${category}`)
+                            }} >{category}: {categories[category]}</Button>
                         );
                     })
                 }
             </div>
             <div className='options'>
                 <h3>Options</h3>
-                <h4>Must Read Only</h4>
-                <Switch defaultUnChecked onChange={filterMustRead} />
+                <h4 style={{ display: 'inline-block', marginRight: '50px'}}>Must Read Only</h4>
+                <Switch onClick={e => filterMustRead(e)} />
             </div>
 
         </Drawer>
