@@ -139,3 +139,11 @@ export const getUserData = id => dispatch => {
       dispatch({ type: GET_USERDATA_FAILURE, payload: err.response });
     });
 };
+
+// Logout
+
+export const logout = () => dispatch => {
+  dispatch();
+  localStorage.clear();
+  dispatch();
+};
