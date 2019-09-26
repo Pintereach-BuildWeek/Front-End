@@ -7,6 +7,8 @@ export default function ArticleModal(props) {
     const initialFormState = { articleid: '', link: '', title: '', summary: '', category: '' };
 
     // State to handle content of article form
+
+
     const [article, setArticle] = useState(initialFormState);
 
     const handleInputChange = e => {
@@ -15,8 +17,10 @@ export default function ArticleModal(props) {
         console.log(article)
     }
 
-    const clickAddArticle = () => {
+    const clickAddArticle = e => {
+        e.preventDefault();
         addArticle(article)
+        setArticle(initialFormState)
     }
 
     return (
@@ -32,6 +36,7 @@ export default function ArticleModal(props) {
             >
 
                 <Form>
+
 
                     <label htmlFor='URL'>URL</label>
                     <Input type='text' name='link' value={article.link} onChange={handleInputChange} />
