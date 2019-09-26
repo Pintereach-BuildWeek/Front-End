@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Icon } from 'antd';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Signup from "./components/Signup";
 import NavBar from './components/NavBar';
@@ -28,8 +28,8 @@ function App() {
           <Route path='/home' component={Home} />
         </Content>
       </div>
-      <Footer style={{ textAlign: 'center' }}>
-        Copyright Pintereach 2019
+      <Footer style={{ display: 'flex', justifyContent: 'space-evenly', padding: 'auto 50%' }}>
+        <span>Copyright Pintereach 2019</span> <span><a href='https://github.com/Pintereach-BuildWeek'><Icon type="github" /></a></span>
       </Footer>
     </Router >
   );
