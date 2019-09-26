@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button } from 'antd';
-import SearchForm from './SearchForm';
+import { Button, Layout, Icon, PageHeader, BackTop } from 'antd';
+// import SearchForm from './SearchForm';
+
 
 import ArticleList from './ArticleList';
 import ArticleModal from './ArticleModal';
 import Menu from './Menu';
 
+const { Header, Content } = Layout;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -48,7 +50,9 @@ const Home = () => {
     article.articleid = Date.now();
     // console.log(article)
     setArticles([...articles, article]);
+    // setDisplayedArticles(articles);
     setModalDisplay({ visible: false });
+
     // console.log(articles)
 
   }
@@ -60,7 +64,7 @@ const Home = () => {
   const deleteArticle = id => {
     console.log(`delete clicked`)
     setArticles(articles.filter(article => article.articleid !== id));
-    setDisplayedArticles(articles)
+    // setDisplayedArticles(articles)
   }
 
   // Update for articleDisplay
@@ -86,10 +90,11 @@ const Home = () => {
 
   // Update for articleDisplay
   const filterMustRead = () => {
-    console.log(`delete clicked`)
-    // setToggleState(!toggleState)
-    // !toggleState ?
-    //   setViewState(articles.filter(article => article.mustRead === true)) : setViewState(articles)
+
+    setToggleState(!toggleState)
+
+    !toggleState ?
+      setDisplayedArticles(articles.filter(article => article.mustRead === true)) : setDisplayedArticles(articles)
     console.log(toggleState)
   }
 
@@ -98,7 +103,7 @@ const Home = () => {
       .then(response => {
         setArticles(response.data);
         // setDisplayedArticles to articles
-        setDisplayedArticles(response.data);
+        // setDisplayedArticles(response.data);
 
       })
       .catch(error => {
@@ -107,22 +112,34 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <Button onClick={() => showModal()}>Add Article</Button>
-      <Button onClick={() => showMenu()}>Menu</Button>
+    <Layout>
+      <PageHeader>
+        <Button
+          onClick={() => showMenu()}
+          style={{ margin: '1rem', width: '4rem', height: '3rem' }}
+        >
+          <Icon type="menu" />
+        </Button>
 
-      <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} />
+        {/* <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} /> */}
+      </PageHeader>
 
       <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} hideModal={hideModal} />
 
-      <ArticleList articles={displayedArticles}
-        setMustRead={setMustRead}
-        deleteArticle={deleteArticle} />
+      <Content style={{ display: 'flex', paddingBottom: '10rem', justifyContent: 'center' }}>
+        <div>
+          <BackTop />
+          <strong style={{ color: 'rgba(64, 64, 64, 0.6)' }}>  </strong>
 
+        </div>
+        <ArticleList articles={articles}
+          setMustRead={setMustRead}
+          deleteArticle={deleteArticle} />
 
-    </>
+      </Content>
+    </Layout>
 
   )
 

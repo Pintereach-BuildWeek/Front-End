@@ -1,21 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { PageHeader } from 'antd';
 
 const NavBar = () => {
-    return (
-      <div className="navbar">
+  return (
+    <div style={{ width: '30%', display: 'flex', justifyContent: 'space-between' }}>
 
-        <h1>Pintereach</h1>
-        <h2>Organize Your Studies</h2>
 
-        <NavLink to="/" className="NavBtn">  Signup  </NavLink>
-        <NavLink to="/" className="NavBtn">  Login  </NavLink>
-        <NavLink exact to="/home" className="NavBtn"> Your Profile  </NavLink>
-        <NavLink to="/" className="NavBtn">  Must Reads  </NavLink>
-        <NavLink to="/" className="NavBtn">  Logout  </NavLink>
+      <NavLink to="/" className="NavBtn">  Signup  </NavLink>
+      <NavLink to="/" className="NavBtn">  Login  </NavLink>
+      <NavLink exact to="/home" className="NavBtn"> Your Profile  </NavLink>
+      <NavLink to="/" className="NavBtn">  Must Reads  </NavLink>
+      <NavLink to="/" className="NavBtn">  Logout  </NavLink>
 
-      </div>
-    );
-  };
-  
-  export default NavBar;
+    </div>
+  );
+};
+
+export default NavBar;

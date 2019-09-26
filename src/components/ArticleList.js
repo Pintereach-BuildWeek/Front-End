@@ -1,29 +1,39 @@
 import React from "react";
 import ArticleCard from './ArticleCard';
+import { Row, Col } from 'antd';
 
 function ArticleList({ articles, setMustRead, deleteArticle }) {
 
     return (
-        <div className='articles'>
+
+        <Row ctype="flex" justify="space-around" gutter={16} style={{ margin: '1rem', width: 'auto' }}>
             {
-
                 articles.map(entry =>
-                    <ArticleCard setMustRead={setMustRead}
-                        deleteArticle={deleteArticle}
+                    <Col
+                        span={8}
+                        style={{
 
-                        key={entry.articleid}
-                        id={entry.articleid}
-                        mustRead={entry.mustRead}
-                        imgUrl='https://source.unsplash.com/random'
-                        title={entry.title}
-                        category={entry.category}
-                        summary={entry.summary}
-                        link={entry.link}
-                    />
+                            marginBottom: '2rem',
+
+                        }}>
+                        <ArticleCard setMustRead={setMustRead}
+                            deleteArticle={deleteArticle}
+
+                            key={entry.articleid}
+                            id={entry.articleid}
+                            mustRead={entry.mustRead}
+                            imgUrl='https://source.unsplash.com/random'
+                            title={entry.title}
+                            category={entry.category}
+                            summary={entry.summary}
+                            link={entry.link}
+                        />
+                    </Col>
                 )
-
             }
-        </div>
+
+        </Row>
+
     )
 }
 export default ArticleList;
