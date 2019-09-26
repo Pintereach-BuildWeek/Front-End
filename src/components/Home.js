@@ -12,10 +12,10 @@ const { Header, Content } = Layout;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  
+
   // State to manage what is displayed on ArticleList
   const [originalArticles, setOriginalArticles] = useState([]);
-  
+
   // console.log('1: articles === originalArticles', originalArticles === articles);
   // console.log(displayedArticles)
 
@@ -102,7 +102,7 @@ const Home = () => {
     }
   }
 
-  const [apiUrl, setApiUrl] = useState('http://bw-pintereach.herokuapp.com/articles/articles');
+  const [apiUrl, setApiUrl] = useState('https://bw-pintereach.herokuapp.com/articles/articles');
 
   useEffect(() => {
     axios.get(apiUrl)
@@ -131,13 +131,13 @@ const Home = () => {
         {/* <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} /> */}
       </PageHeader>
 
-      <Menu 
-        showMenu={showMenu} 
-        hideMenu={hideMenu} 
-        menuDisplay={menuDisplay} 
-        articles={articles} 
-        showModal={showModal} 
-        filterMustRead={filterMustRead} 
+      <Menu
+        showMenu={showMenu}
+        hideMenu={hideMenu}
+        menuDisplay={menuDisplay}
+        articles={articles}
+        showModal={showModal}
+        filterMustRead={filterMustRead}
         setApiUrl={setApiUrl}
       />
 
