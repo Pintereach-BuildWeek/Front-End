@@ -69,12 +69,15 @@ const Home = () => {
 
   // Update for articleDisplay
   const setMustRead = articleid => {
-    console.log(`mustRead clicked`);
+    // console.log(`mustRead clicked`);
     // console.log(articleid)
-    let index = articles.findIndex(entry => entry.articleid === articleid)
+    const idx = articles.findIndex(entry => entry.articleid === articleid)
     // console.log(index)
-    articles[index].mustRead = !articles[index].mustRead;
-    console.log(`item at index ${index} marked Must Read`)
+    // articles[index].mustRead = !articles[index].mustRead;
+    const updatedArticleList = [...articles];
+    updatedArticleList[idx].mustRead = !updatedArticleList[idx].mustRead;
+    setArticles(updatedArticleList);
+    // console.log(`item at index ${index} marked Must Read`)
   }
 
   // Menu functions
@@ -134,6 +137,7 @@ const Home = () => {
           <strong style={{ color: 'rgba(64, 64, 64, 0.6)' }}>  </strong>
 
         </div>
+
         <ArticleList articles={articles}
           setMustRead={setMustRead}
           deleteArticle={deleteArticle} />
