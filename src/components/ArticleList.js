@@ -11,15 +11,15 @@ function ArticleList({ articles, setMustRead, deleteArticle }) {
                 articles.map(entry =>
                     <Col
                         span={8}
+                        key={entry.articleid}
                         style={{
-
+                            
                             marginBottom: '2rem',
-
+                            
                         }}>
                         <ArticleCard setMustRead={setMustRead}
                             deleteArticle={deleteArticle}
 
-                            key={entry.articleid}
                             id={entry.articleid}
                             mustRead={entry.mustRead}
                             imgUrl='https://source.unsplash.com/random'
