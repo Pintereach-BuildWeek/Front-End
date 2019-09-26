@@ -16,7 +16,7 @@ const Home = () => {
   // State to manage what is displayed on ArticleList
   const [displayedArticles, setDisplayedArticles] = useState(articles)
 
-  console.log(displayedArticles)
+  // console.log(displayedArticles)
 
   // State for Menu, ArticleModal
   const [menuDisplay, setMenuDisplay] = useState({ visible: false });
