@@ -36,6 +36,7 @@ export default function Menu(props) {
                 style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', margin: '2rem 0' }}>
 
                 <h3>Categories</h3>
+                <button onClick={() => setApiUrl('https://bw-pintereach.herokuapp.com/articles/articles')}>All</button>
                 {
                     Object.keys(categories).sort().map(category => {
                         return (
