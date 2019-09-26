@@ -10,43 +10,44 @@ const ArticleCard = (props) => {
 
   return (
     // card fragment
-    <Card
+    <>
+      <Card
 
-      hoverable={true}
+        hoverable={true}
 
-      cover={
-        <Microlink url={link} apiKey='ctiXumAQ4B8shwxqEpyuYCANOInD60wybDTFLE40' />
-      }
+        cover={
+          <Microlink url={link} apiKey='ctiXumAQ4B8shwxqEpyuYCANOInD60wybDTFLE40' />
+        }
 
-      actions={[
-        <Button type={(mustRead ? 'primary' : 'dashed')} onClick={() => setMustRead(id)} >Must Read</Button>,
-        <Button onClick={() => deleteArticle(id)} ><Icon type="delete" /></Button>
-
-
-      ]}>
-
-      <Meta
-        title={title}
-        description={<p style={{ height: '5rem' }}>{summary}</p>}
-
-      />
-      <div>
-        <hr style={{
-          margin: '1rem'
-        }}></hr>
-        <span
-          style={{
-            display: 'flex',
-            justifyContent: 'space-evenly',
-            alignItems: 'baseline'
-          }}>
-          <Icon type="tag" />
-          <p>{category}</p>
-        </span>
-      </div>
+        actions={[
+          <Button type={(mustRead ? 'primary' : 'dashed')} onClick={() => setMustRead(id)} >Must Read</Button>,
+          <Button onClick={() => deleteArticle(id)} ><Icon type="delete" /></Button>
 
 
-    </Card >
+        ]}>
+
+        <Meta
+          title={title}
+          description={<p style={{ height: '5rem' }}>{summary}</p>}
+
+        />
+        <div>
+          <hr style={{
+            margin: '1rem'
+          }}></hr>
+          <span
+            style={{
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              alignItems: 'baseline'
+            }}>
+            <Icon type="tag" />
+            <p>{category}</p>
+          </span>
+        </div>
+
+
+      </Card >
     </>
   )
 
