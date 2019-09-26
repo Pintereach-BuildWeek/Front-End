@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button } from 'antd';
-import SearchForm from './SearchForm';
+import { Button, Layout, Icon, PageHeader, BackTop } from 'antd';
+// import SearchForm from './SearchForm';
+
 
 import ArticleList from './ArticleList';
 import ArticleModal from './ArticleModal';
 import Menu from './Menu';
-// import ArticleCard from './ArticleCard';
 
-import { articlesArray } from '../data';
+const { Header, Content } = Layout;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  // State for Menu, ArticleModal
 
-  const [menuDisplay, setMenuDisplay] = useState({ visible: false, placement: 'left' });
+  // State to manage what is displayed on ArticleList
+  const [displayedArticles, setDisplayedArticles] = useState(articles)
+
+  console.log(displayedArticles)
+
+  // State for Menu, ArticleModal
+  const [menuDisplay, setMenuDisplay] = useState({ visible: false });
 
   //ArticleModal state
   const [modalDisplay, setModalDisplay] = useState({ visible: false });
@@ -45,25 +50,31 @@ const Home = () => {
     article.articleid = Date.now();
     // console.log(article)
     setArticles([...articles, article]);
+    // setDisplayedArticles(articles);
     setModalDisplay({ visible: false });
+
     // console.log(articles)
 
   }
 
-  console.log(articles);
+  // console.log(articles);
 
   // Card Functions
 
   const deleteArticle = id => {
     console.log(`delete clicked`)
-    setArticles(articles.filter(article => article.id !== id))
+    setArticles(articles.filter(article => article.articleid !== id));
+    // setDisplayedArticles(articles)
   }
 
-  const setMustRead = id => {
+  // Update for articleDisplay
+  const setMustRead = articleid => {
     console.log(`mustRead clicked`);
-    console.log(id)
-    console.log(articles[id].mustRead);
-    articles[id].mustRead = !articles[id].mustRead
+    // console.log(articleid)
+    let index = articles.findIndex(entry => entry.articleid === articleid)
+    // console.log(index)
+    articles[index].mustRead = !articles[index].mustRead;
+    console.log(`item at index ${index} marked Must Read`)
   }
 
   // Menu functions
@@ -77,19 +88,22 @@ const Home = () => {
     setMenuDisplay({ visible: false });
   }
 
+  // Update for articleDisplay
   const filterMustRead = () => {
-    console.log(`delete clicked`)
+
     setToggleState(!toggleState)
+
     !toggleState ?
-      setArticles(articles.filter(article => article.mustRead === true)) : setArticles(articlesArray)
+      setDisplayedArticles(articles.filter(article => article.mustRead === true)) : setDisplayedArticles(articles)
     console.log(toggleState)
   }
 
   useEffect(() => {
     axios.get('http://bw-pintereach.herokuapp.com/articles/articles')
       .then(response => {
- christine-fletcher02
-        setArticles(response.data);  //provides cat, link and id
+        setArticles(response.data);
+        // setDisplayedArticles to articles
+        // setDisplayedArticles(response.data);
 
       })
       .catch(error => {
@@ -98,23 +112,34 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <Button onClick={() => showModal()}>Add Article</Button>
-      <Button onClick={() => showMenu()}>Menu</Button>
+    <Layout>
+      <PageHeader>
+        <Button
+          onClick={() => showMenu()}
+          style={{ margin: '1rem', width: '4rem', height: '3rem' }}
+        >
+          <Icon type="menu" />
+        </Button>
 
-      <SearchForm articles={articles}/>
+        {/* <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} /> */}
+      </PageHeader>
 
       <Menu showMenu={showMenu} hideMenu={hideMenu} menuDisplay={menuDisplay} articles={articles} showModal={showModal} filterMustRead={filterMustRead} />
 
       <ArticleModal addArticle={addArticle} modalDisplay={modalDisplay} hideModal={hideModal} />
 
- christine-fletcher02
-      <ArticleList  articles={articles} 
-                    setMustRead={setMustRead}
-                    deleteArticle={deleteArticle}/>
+      <Content style={{ display: 'flex', paddingBottom: '10rem', justifyContent: 'center' }}>
+        <div>
+          <BackTop />
+          <strong style={{ color: 'rgba(64, 64, 64, 0.6)' }}>  </strong>
 
+        </div>
+        <ArticleList articles={articles}
+          setMustRead={setMustRead}
+          deleteArticle={deleteArticle} />
 
-    </>
+      </Content>
+    </Layout>
 
   )
 

@@ -1,28 +1,39 @@
 import React from "react";
 import ArticleCard from './ArticleCard';
+import { Row, Col } from 'antd';
 
 function ArticleList({ articles, setMustRead, deleteArticle }) {
 
     return (
-        <div className='articles'>
-            {
-                
-                articles.map(entry => 
-                    <ArticleCard    setMustRead={setMustRead}
-                                    deleteArticle={deleteArticle}
-                                    key={entry.articleid}
-                                    id={entry.articleid}
-                                    mustRead={entry.articleid % 2 === 0 ? false : true}
-                                    imgUrl='https://source.unsplash.com/random'
-                                    title='Title goes here.'
-                                    category={entry.category}
-                                    summary='Summary goes here.'
-                                    link={entry.link}
-                                    />
-                        )
 
+        <Row ctype="flex" justify="space-around" gutter={16} style={{ margin: '1rem', width: 'auto' }}>
+            {
+                articles.map(entry =>
+                    <Col
+                        span={8}
+                        style={{
+
+                            marginBottom: '2rem',
+
+                        }}>
+                        <ArticleCard setMustRead={setMustRead}
+                            deleteArticle={deleteArticle}
+
+                            key={entry.articleid}
+                            id={entry.articleid}
+                            mustRead={entry.mustRead}
+                            imgUrl='https://source.unsplash.com/random'
+                            title={entry.title}
+                            category={entry.category}
+                            summary={entry.summary}
+                            link={entry.link}
+                        />
+                    </Col>
+                )
             }
-        </div>
+
+        </Row>
+
     )
 }
 export default ArticleList;

@@ -191,9 +191,7 @@ const Signup = (props) => {
           </Content>
         </Layout>
 
-        <footer>
-          <p> Add Footer Content !!! </p>
-        </footer>
+
 
       </div>
     </>

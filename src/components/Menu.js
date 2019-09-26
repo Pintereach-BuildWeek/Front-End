@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer, Button, Switch } from 'antd';
 
-// import { articlesArray } from '../data';
 
 
 export default function Menu(props) {
@@ -23,13 +22,20 @@ export default function Menu(props) {
             closable={true}
             onClose={hideMenu}
             visible={menuDisplay.visible}
-        >
 
-            <Button onClick={() => {
-                hideMenu();
-                showModal();
-            }}>Add Article</Button>
-            <div className='categories'>
+        >
+            <div
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '2rem 0' }}
+            >
+
+                <Button onClick={() => {
+                    hideMenu();
+                    showModal();
+                }}>Add Article</Button>
+            </div>
+            <div
+                style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', margin: '2rem 0' }}>
+
                 <h3>Categories</h3>
                 {
                     Object.keys(categories).sort().map(category => {
@@ -45,7 +51,6 @@ export default function Menu(props) {
                 <h3>Options</h3>
                 <h4>Must Read Only</h4>
                 <Switch defaultUnChecked onChange={filterMustRead} />
-
             </div>
 
         </Drawer>
