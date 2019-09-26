@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import NavBar from './components/NavBar';
 import PrivateRoute from "./components/PrivateRoute";
 // import Modal from "./components/Modal";
+import Login from './components/Login';
 import Home from './components/Home';
 
 
@@ -21,7 +22,8 @@ function App() {
         </Header>
         <Content>
           <div className="body">
-            <Route exact path="/" component={Signup} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path="/signup" component={Signup} />
             {/* <PrivateRoute exact path="/protected" component={Modal} /> */}
           </div>
 

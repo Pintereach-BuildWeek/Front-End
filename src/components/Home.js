@@ -65,7 +65,10 @@ const Home = () => {
   const deleteArticle = id => {
     console.log(`delete clicked`)
     setArticles(articles.filter(article => article.articleid !== id));
+
     // setDisplayedArticles(articles)
+    // POST updated article list
+
   }
 
   // Update for articleDisplay
