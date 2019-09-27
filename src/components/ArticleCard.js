@@ -11,20 +11,12 @@ const ArticleCard = (props) => {
   return (
     // card fragment
     <>
-      {/* <Col
-        span={8}
-        style={{
-
-          marginBottom: '2rem',
-
-        }}> */}
-
       <Card
 
         hoverable={true}
 
         cover={
-          <Microlink url={link} />
+          <Microlink url={link} apiKey='ctiXumAQ4B8shwxqEpyuYCANOInD60wybDTFLE40' />
         }
 
         actions={[
@@ -33,6 +25,7 @@ const ArticleCard = (props) => {
 
 
         ]}>
+
         <Meta
           title={title}
           description={<p style={{ height: '5rem' }}>{summary}</p>}
@@ -55,8 +48,6 @@ const ArticleCard = (props) => {
 
 
       </Card >
-
-      {/* </Col> */}
     </>
   )
 
